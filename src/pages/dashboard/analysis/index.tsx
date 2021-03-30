@@ -12,7 +12,7 @@ import SalesCard from './components/SalesCard';
 import TopSearch from './components/TopSearch';
 import ProportionSales from './components/ProportionSales';
 import OfflineData from './components/OfflineData';
-import Chart from './components/Charts/CustomCandleStick/Chart'
+import Chart from './components/Charts/CustomCandleStick/Chart';
 
 import { getTimeDistance } from './utils/utils';
 import type { AnalysisData } from './data.d';
@@ -50,6 +50,10 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
         type: 'dashboardAndanalysis/fetch',
       });
     });
+    // getData().then((data) => {
+    //   console.log(data);
+    //   this.setState({ data });
+    // });
   }
 
   componentWillUnmount() {
@@ -170,8 +174,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
               marginTop: 24,
             }}
           >
-            <Chart type={type} data={this.state.data} />
-            <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+            <Col xl={24} lg={24} md={24} sm={24} xs={24}>
               <TopSearch
                 loading={loading}
                 visitData2={visitData2}
@@ -179,6 +182,9 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
                 dropdownGroup={dropdownGroup}
               />
             </Col>
+            {/* <Col xl={12} lg={24} md={24} sm={24} xs={24}> */}
+              {/* <Chart type="svg" data={} /> */}
+            {/* </Col> */}
             {/* <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <ProportionSales
                 dropdownGroup={dropdownGroup}

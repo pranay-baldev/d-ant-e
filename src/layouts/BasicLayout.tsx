@@ -114,12 +114,11 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
       },
     [location.pathname],
   );
-  const { formatMessage } = useIntl();
+  const {} = useIntl();
   return (
     <>
       <ProLayout
         logo={logo}
-        formatMessage={formatMessage}
         {...props}
         {...settings}
         onCollapse={handleMenuCollapse}
@@ -138,9 +137,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         breadcrumbRender={(routers = []) => [
           {
             path: '/',
-            breadcrumbName: formatMessage({
-              id: 'menu.home',
-            }),
+            breadcrumbName: '首页',
           },
           ...routers,
         ]}
@@ -151,12 +148,10 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           ) : (
             <span>{route.breadcrumbName}</span>
           );
-        }}
-        // footerRender={() => {
+        }} // footerRender={() => {
         //   if (settings.footerRender || settings.footerRender === undefined) {
         //     return defaultFooterDom;
         //   }
-
         //   return null;
         // }}
         menuDataRender={menuDataRender}

@@ -9,6 +9,7 @@ export type SearchDataType = {
   count: number;
   range: number;
   status: number;
+  chartData: object;
 };
 
 export type OfflineDataType = {

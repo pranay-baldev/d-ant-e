@@ -8,7 +8,7 @@ export type ModelType = {
   state: AnalysisData;
   effects: {
     fetch: Effect;
-    fetchSalesData: Effect;
+    fetchChartData: Effect;
   };
   reducers: {
     save: Reducer<AnalysisData>;
@@ -43,13 +43,13 @@ const Model: ModelType = {
         payload: response,
       });
     },
-    *fetchSalesData(_, { call, put }) {
-      const response = yield call(symbolData);
+    *fetchChartData(_, { call, put }) {
+      const response = yield call(symbolChartData);
       console.log('s',response)
       yield put({
         type: 'save',
         payload: {
-          salesData: response.salesData,
+          salesData: response.chartData,
         },
       });
     },
