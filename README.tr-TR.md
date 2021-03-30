@@ -1,6 +1,6 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [Русский](./README.ru-RU.md) | Türkçe | [日本語](./README.ja-JP.md) | [Français](./README.fr-FR.md) | [Português](./README.pt-BR.md) | [العربية](./README.ar-DZ.md)
 
-<h1 align="center">Ant Design Pro</h1>
+<h1 align="center">Console Pro</h1>
 
 <div align="center">
 
@@ -21,7 +21,7 @@ React ile kurumsal uygulamalar için taslak olarak geliştirilmiş kullanıma ha
 
 ## 4.0 Versiyonu Şimdi Yayında! 🎉🎉🎉
 
-[Announcing Ant Design Pro 4.0.0](https://medium.com/ant-design/ant-design-pro-v4-is-here-6f23098ae9d9)
+[Announcing Console Pro 4.0.0](https://medium.com/ant-design/ant-design-pro-v4-is-here-6f23098ae9d9)
 
 ## Çeviri Desteği :loudspeaker:
 
@@ -31,7 +31,7 @@ React ile kurumsal uygulamalar için taslak olarak geliştirilmiş kullanıma ha
 
 - :bulb: **TypeScript**: Uygulama ölçeğinde geliştirme için JavaScript
 - :scroll: **Blocks**: Block template ile sayfa oluşturma
-- :gem: **Zarif Tasarım**: Buradan [Ant Design özellikleri](http://ant.design/)
+- :gem: **Zarif Tasarım**: Buradan [Console özellikleri](http://ant.design/)
 - :triangular_ruler: **Ortak Şablonlar**: Kurumsal uygulamalar için şablonlar
 - :rocket: **Sanatsal gelişim durumu**: Newest development stack of React/umi/dva/antd
 - :iphone: **Responsive**: Değişken ekran boyutları için tasarlanmıştır
@@ -118,6 +118,6 @@ Modern internet tarayıcıları ve IE11.
 
 Her türlü desteğinize açığız, bu projeye nasıl katkıda bulunabileceğinize dair bazı örnekler:
 
-- Günlük işinizde Ant Design Pro kullanın.
+- Günlük işinizde Console Pro kullanın.
 - Hataları bildirmek veya soru sormak için [issues](http://github.com/ant-design/ant-design-pro/issues) gönderin.
 - Kodumuzu geliştirmek için [pull requests](http://github.com/ant-design/ant-design-pro/pulls) gönderin.

@@ -1,6 +1,6 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md) | Русский | [Türkçe](./README.tr-TR.md) | [日本語](./README.ja-JP.md) | [Français](./README.fr-FR.md) | [Português](./README.pt-BR.md) | [العربية](./README.ar-DZ.md)
 
-<h1 align="center">Ant Design Pro</h1>
+<h1 align="center">Console Pro</h1>
 
 <div align="center">
 
@@ -25,7 +25,7 @@ UI-решение "из коробки" для корпоративных при
 
 ## Возможности
 
-- :gem: **Аккуратный дизайн**: Посмотрите [спецификацию Ant Design](http://ant.design/)
+- :gem: **Аккуратный дизайн**: Посмотрите [спецификацию Console](http://ant.design/)
 - :triangular_ruler: **Общие шаблоны**: Стандартные шаблоны для корпоративных приложений
 - :rocket: **Разработка, как искусство**: Новейший стек технологий React/umi/dva/antd
 - :iphone: **Отзывчивая верстка**: Создан для экранов разных размеров
@@ -104,6 +104,6 @@ $ npm start         # visit http://localhost:8000
 
 Любые варианты распространения приветствуются! Вот несколько примеров того, как вы можете помочь распространению проекта:
 
-- Использовать Ant Design Pro в ежедневной работе.
+- Использовать Console Pro в ежедневной работе.
 - Создавать [задачи](http://github.com/ant-design/ant-design-pro/issues) заводить баги или отвечать на вопросы.
 - Делать [pull-реквесты](http://github.com/ant-design/ant-design-pro/pulls) для совершенствования нашего кода.

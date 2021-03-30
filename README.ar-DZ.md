@@ -1,6 +1,6 @@
 [English](./README.zh-CN.md) | [简体中文](./README.zh-CN.md) | [Русский](./README.ru-RU.md) | [Türkçe](./README.tr-TR.md) | [日本語](./README.ja-JP.md) | [Français](./README.fr-FR.md) | [Português](./README.pt-BR.md) | العربية
 
-<h1 align="center">Ant Design Pro</h1>
+<h1 align="center">Console Pro</h1>
 <div dir="rtl">
 
 <div align="center">
@@ -24,7 +24,7 @@
 
 ## 4.0 صدر الآن! 🎉🎉🎉
 
-[الإعلان عن Ant Design Pro 4.0.0](https://medium.com/ant-design/ant-design-pro-v4-is-here-6f23098ae9d9)
+[الإعلان عن Console Pro 4.0.0](https://medium.com/ant-design/ant-design-pro-v4-is-here-6f23098ae9d9)
 
 ## توظيف الترجمة :loudspeaker:
 
@@ -129,7 +129,7 @@ $ npm start         # visit http://localhost:8000
 
 نرحب بأي نوع من المساهمات ، وإليك بعض الأمثلة عن كيفية المساهمة في هذا المشروع:
 
-- استخدم Ant Design Pro في عملك اليومي.
+- استخدم Console Pro في عملك اليومي.
 - إرسال [القضايا](http://github.com/ant-design/ant-design-pro/issues) للإبلاغ عن مشكل أو لطرح أسئلة
 - اقترح [طلبات السحب](http://github.com/ant-design/ant-design-pro/pulls) لتحسين الكود الخاص بنا.
 

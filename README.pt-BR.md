@@ -1,6 +1,6 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md) | [Русский](./README.ru-RU.md) | [Türkçe](./README.tr-TR.md) | [日本語](./README.ja-JP.md) | [Français](./README.fr-FR.md) | Português | [العربية](./README.ar-DZ.md)
 
-<h1 align="center">Ant Design Pro</h1>
+<h1 align="center">Console Pro</h1>
 
 <div align="center">
 
@@ -21,7 +21,7 @@ Uma solução de UI pronta para aplicações corporativos na forma de um boilerp
 
 ## 4.0 Lançado! 🎉🎉🎉
 
-[Anúncio do Ant Design Pro 4.0.0](https://medium.com/ant-design/ant-design-pro-v4-is-here-6f23098ae9d9)
+[Anúncio do Console Pro 4.0.0](https://medium.com/ant-design/ant-design-pro-v4-is-here-6f23098ae9d9)
 
 ## Recrutamento para tradução :loudspeaker:
 
@@ -31,7 +31,7 @@ Precisamos da sua ajuda: https://github.com/ant-design/ant-design-pro/issues/120
 
 - :bulb: **TypeScript**: Uma linguaguem para escalar aplicações JavaScript
 - :scroll: **Blocks**: Crie páginas com block template
-- :gem: **Design Elegante**: Segue as [especificações do Ant Design](http://ant.design/)
+- :gem: **Design Elegante**: Segue as [especificações do Console](http://ant.design/)
 - :triangular_ruler: **Modelos Comuns**: Modelos comuns para apliações empresariais
 - :rocket: **Estado da Arte do Desenvolvimento**: Stack de desenvolvimento mais recente do React/umi/dva/antd
 - :iphone: **Responsivo**: Projetado para tamanhos de telas variados
@@ -118,6 +118,6 @@ Navegadores modernos e IE11.
 
 Qualquer tipo de contribuição é bem-vinda, aqui estão alguns exemplos de como você pode contribuir com esse projeto:
 
-- Use Ant Design Pro no seu trabalho diário.
+- Use Console Pro no seu trabalho diário.
 - Submeta [issues](http://github.com/ant-design/ant-design-pro/issues) para reportar bugs ou tirar dúvidas.
 - Proponha [pull requests](http://github.com/ant-design/ant-design-pro/pulls) para melhorar nosso código.
