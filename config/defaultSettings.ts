@@ -5,22 +5,21 @@ type DefaultSettings = Partial<ProSettings> & {
 };
 
 const proSettings: DefaultSettings = {
-
-  navTheme: "realDark",
-  primaryColor: "#1890ff",
-  layout: "side",
-  contentWidth: "Fluid",
+  navTheme: 'realDark',
+  primaryColor: '#1890ff',
+  layout: 'side',
+  contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
-  title: "Console",
-  pwa:false,
-  iconfontUrl: "",
+  title: 'Console',
+  pwa: false,
+  iconfontUrl: '',
   menu: {
-    "locale": true
+    locale: true,
   },
   headerHeight: 48,
-  splitMenus: false
-
+  splitMenus: false,
+  headerRender: false,
 };
 
 export type { DefaultSettings };

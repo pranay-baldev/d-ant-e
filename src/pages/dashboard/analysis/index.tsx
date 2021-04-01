@@ -49,6 +49,9 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       dispatch({
         type: 'dashboardAndanalysis/fetch',
       });
+      // dispatch({
+
+      // })
     });
     // getData().then((data) => {
     //   console.log(data);
@@ -183,7 +186,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
               />
             </Col>
             {/* <Col xl={12} lg={24} md={24} sm={24} xs={24}> */}
-              {/* <Chart type="svg" data={} /> */}
+            {/* <Chart type="svg" data={} /> */}
             {/* </Col> */}
             {/* <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <ProportionSales

@@ -36,3 +36,4 @@ const SettingModel: SettingModelType = {
   },
 };
 export default SettingModel;
+

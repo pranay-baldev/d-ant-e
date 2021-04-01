@@ -20,6 +20,9 @@ export async function symbolData() {
       type: result[i].type,
       chartData: undefined,
     });
+    if (i >= 0 && i <= 4) {
+      searchData[i].chartData = await symbolChartData(result[i].symbol);
+    }
   }
   // symbolChartData('AAPL');
   return { searchData };
@@ -27,8 +30,8 @@ export async function symbolData() {
 
 export async function symbolChartData(
   symbol: string,
-  from = 1615298999,
-  to = new Date().getTime(),
+  from = 1305298999,
+  to = Math.round(+new Date() / 1000),
 ) {
   let result = await request.get(
     `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=D&from=${from}&to=${to}&token=c18tsg748v6om6p23rkg`,
@@ -42,20 +45,20 @@ export async function symbolChartData(
         low: result['l'][i],
         open: result['o'][i],
         volume: result['v'][i],
-        date: new Date(result['t'][i]),
+        date: new Date(result['t'][i] * 1000),
       });
     }
   } else {
     finalChartData.push({
-      close: 0,
-      high: 0,
-      low: 0,
-      open: 0,
-      volume: 0,
+      close: undefined,
+      high: undefined,
+      low: undefined,
+      open: undefined,
+      volume: undefined,
       date: new Date(),
     });
   }
 
-  console.log(finalChartData);
+  console.log(symbol, finalChartData);
   return finalChartData;
 }

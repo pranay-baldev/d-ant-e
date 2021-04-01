@@ -72,12 +72,30 @@ const TopSearch = ({
   searchData: SearchDataType[];
 }) => {
   const [page, setPage] = useState(1);
-  const onChange = async (page) => {
-    console.log(page);
+  const [loadingComp, setLoadingComp] = useState(false);
+  const onChange = async (page: React.SetStateAction<number>, pageSize: any) => {
     setPage(page);
-    for (let i = 0; i < 10; i++) {
-      searchData[i].chartData = await symbolChartData(searchData[i].symbol);
+    setLoadingComp(true);
+    for (let i = 0; i < 5; i++) {
+      // searchData[i + 5 * (page - 1)].chartData = await symbolChartData(
+      //   searchData[i + 5 * (page - 1)].symbol,
+      // );
+      if (searchData.length - 1 >= i + 5 * (page - 1)) {
+        symbolChartData(searchData[i + 5 * (page - 1)].symbol).then((data) => {
+          searchData[i + 5 * (page - 1)].chartData = data;
+        });
+      }
+
+      // setTimeout(() => {
+      // let tempChartState = [...isChartVisible];
+      // tempChartState[i] = !!(
+      //   searchData[i + 5 * (page - 1)].chartData && searchData[i + 5 * (page - 1)].chartData.close
+      // );
+      // setIsChartVisible(tempChartState);
+      // console.log(tempChartState[searchData[i + 5 * (page - 1)].chartData?.close]);
+      // }, 0);
     }
+    setLoadingComp(false);
   };
   return (
     <Card
@@ -88,82 +106,37 @@ const TopSearch = ({
         height: '100%',
       }}
     >
-      <Row gutter={68}>
-        {/* <Col sm={12} xs={24} style={{ marginBottom: 24 }}>
-       <NumberInfo
-         subTitle={
-           <span>
-             <FormattedMessage
-               id="dashboardandanalysis.analysis.search-users"
-               defaultMessage="search users"
-             />
-             <Tooltip
-               title={
-                 <FormattedMessage
-                   id="dashboardandanalysis.analysis.introduce"
-                   defaultMessage="introduce"
-                 />
-               }
-             >
-               <InfoCircleOutlined style={{ marginLeft: 8 }} />
-             </Tooltip>
-           </span>
-         }
-         gap={8}
-         total={numeral(12321).format('0,0')}
-         status="up"
-         subTotal={17.1}
-       />
-       <MiniArea line height={45} data={visitData2} />
-      </Col>
-      <Col sm={12} xs={24} style={{ marginBottom: 24 }}>
-       <NumberInfo
-         subTitle={
-           <span>
-             <FormattedMessage
-               id="dashboardandanalysis.analysis.per-capita-search"
-               defaultMessage="Per Capita Search"
-             />
-             <Tooltip
-               title={
-                 <FormattedMessage
-                   id="dashboardandanalysis.analysis.introduce"
-                   defaultMessage="introduce"
-                 />
-               }
-             >
-               <InfoCircleOutlined style={{ marginLeft: 8 }} />
-             </Tooltip>
-           </span>
-         }
-         total={2.7}
-         status="down"
-         subTotal={26.2}
-         gap={8}
-       />
-       <MiniArea line height={45} data={visitData2} />
-      </Col> */}
-      </Row>
+      <Row gutter={68}></Row>
       <Table<any>
         rowKey={(record) => record.index}
+        loading={loadingComp}
         size="middle"
         columns={columns}
         dataSource={searchData}
         pagination={{
           style: { marginBottom: 0 },
-          pageSize: 10,
+          pageSize: 5,
           showSizeChanger: false,
           current: page,
-          onChange: () => onChange(),
+          onChange: (page: any, pageSize: any) => onChange(page, pageSize),
         }}
         expandable={{
-          expandedRowRender: (record) => (
-            <Chart type="svg" data={searchData[record.index].chartData} />
-          ),
+          expandedRowRender: (record: { index: React.ReactText }) =>
+            searchData[record.index - 1].chartData &&
+            searchData[record.index - 1].chartData[0].close ? (
+              <Chart type="svg" data={searchData[record.index - 1].chartData} />
+            ) : (
+              <span>No Data</span>
+            ),
           expandIcon: ({ expanded, onExpand, record }) =>
             expanded ? (
+              // &&
+              // searchData[record.index].chartData &&
+              // searchData[record.index].chartData.close !== undefined
               <MinusCircleTwoTone onClick={(e) => onExpand(record, e)} />
             ) : (
+              // searchData[record.index].chartData &&
+              // searchData[record.index].chartData.close !== undefined &&
               <PlusCircleTwoTone onClick={(e) => onExpand(record, e)} />
             ),
         }}
