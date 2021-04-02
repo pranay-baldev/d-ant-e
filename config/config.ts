@@ -5,8 +5,8 @@ import proxy from './proxy';
 import routes from './routes';
 const { REACT_APP_ENV } = process.env;
 export default defineConfig({
-  base: '/',
-  publicPath: '/',
+  base: '/d-ant-e/',
+  publicPath: '/d-ant-e/',
   hash: true,
   antd: {},
   dva: {
