@@ -3,16 +3,32 @@ import type { FC } from 'react';
 import React, { useState, useEffect } from 'react';
 import type { Dispatch } from 'umi';
 import { Link, connect, history, FormattedMessage, formatMessage } from 'umi';
+
 import type { StateType } from './model';
 import styles from './style.less';
+
 const FormItem = Form.Item;
 const { Option } = Select;
 const InputGroup = Input.Group;
+
 const passwordStatusMap = {
-  ok: <div className={styles.success}>强度：强</div>,
-  pass: <div className={styles.warning}>强度：中</div>,
-  poor: <div className={styles.error}>强度：太短</div>,
+  ok: (
+    <div className={styles.success}>
+      <FormattedMessage id="userandregister.strength.strong" />
+    </div>
+  ),
+  pass: (
+    <div className={styles.warning}>
+      <FormattedMessage id="userandregister.strength.medium" />
+    </div>
+  ),
+  poor: (
+    <div className={styles.error}>
+      <FormattedMessage id="userandregister.strength.short" />
+    </div>
+  ),
 };
+
 const passwordProgressMap: {
   ok: 'success';
   pass: 'normal';
@@ -22,11 +38,13 @@ const passwordProgressMap: {
   pass: 'normal',
   poor: 'exception',
 };
+
 type RegisterProps = {
   dispatch: Dispatch;
   userAndregister: StateType;
   submitting: boolean;
 };
+
 export type UserRegisterParams = {
   mail: string;
   password: string;
@@ -48,9 +66,7 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
     if (!userAndregister) {
       return;
     }
-
     const account = form.getFieldValue('mail');
-
     if (userAndregister.status === 'ok') {
       message.success('注册成功！');
       history.push({
@@ -67,80 +83,66 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
     },
     [],
   );
-
   const onGetCaptcha = () => {
     let counts = 59;
     setcount(counts);
     interval = window.setInterval(() => {
       counts -= 1;
       setcount(counts);
-
       if (counts === 0) {
         clearInterval(interval);
       }
     }, 1000);
   };
-
   const getPasswordStatus = () => {
     const value = form.getFieldValue('password');
-
     if (value && value.length > 9) {
       return 'ok';
     }
-
     if (value && value.length > 5) {
       return 'pass';
     }
-
     return 'poor';
   };
-
   const onFinish = (values: Record<string, any>) => {
     dispatch({
       type: 'userAndregister/submit',
-      payload: { ...values, prefix },
+      payload: {
+        ...values,
+        prefix,
+      },
     });
   };
-
   const checkConfirm = (_: any, value: string) => {
     const promise = Promise;
-
     if (value && value !== form.getFieldValue('password')) {
-      return promise.reject('两次输入的密码不匹配!');
+      return promise.reject(formatMessage({ id: 'userandregister.password.twice' }));
     }
-
     return promise.resolve();
   };
-
   const checkPassword = (_: any, value: string) => {
-    const promise = Promise; // 没有值的情况
-
+    const promise = Promise;
+    // 没有值的情况
     if (!value) {
       setvisible(!!value);
-      return promise.reject('请输入密码！');
-    } // 有值的情况
-
+      return promise.reject(formatMessage({ id: 'userandregister.password.required' }));
+    }
+    // 有值的情况
     if (!visible) {
       setvisible(!!value);
     }
-
     setpopover(!popover);
-
     if (value.length < 6) {
       return promise.reject('');
     }
-
     if (value && confirmDirty) {
       form.validateFields(['confirm']);
     }
-
     return promise.resolve();
   };
-
   const changePrefix = (value: string) => {
     setprefix(value);
   };
-
   const renderPasswordProgress = () => {
     const value = form.getFieldValue('password');
     const passwordStatus = getPasswordStatus();
@@ -159,53 +161,47 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
 
   return (
     <div className={styles.main}>
-      <h3>注册</h3>
+      <h3>
+        <FormattedMessage id="userandregister.register.register" />
+      </h3>
       <Form form={form} name="UserRegister" onFinish={onFinish}>
         <FormItem
           name="mail"
           rules={[
             {
               required: true,
-              message: '请输入邮箱地址！',
+              message: formatMessage({ id: 'userandregister.email.required' }),
             },
             {
               type: 'email',
-              message: '邮箱地址格式错误！',
+              message: formatMessage({ id: 'userandregister.email.wrong-format' }),
             },
           ]}
         >
-          <Input size="large" placeholder="邮箱" />
+          <Input
+            size="large"
+            placeholder={formatMessage({ id: 'userandregister.email.placeholder' })}
+          />
         </FormItem>
         <Popover
           getPopupContainer={(node) => {
             if (node && node.parentNode) {
               return node.parentNode as HTMLElement;
             }
-
             return node;
           }}
           content={
             visible && (
-              <div
-                style={{
-                  padding: '4px 0',
-                }}
-              >
+              <div style={{ padding: '4px 0' }}>
                 {passwordStatusMap[getPasswordStatus()]}
                 {renderPasswordProgress()}
-                <div
-                  style={{
-                    marginTop: 10,
-                  }}
-                >
-                  请至少输入 6 个字符。请不要使用容易被猜到的密码。
+                <div style={{ marginTop: 10 }}>
+                  <FormattedMessage id="userandregister.strength.msg" />
                 </div>
               </div>
             )
           }
-          overlayStyle={{
-            width: 240,
-          }}
+          overlayStyle={{ width: 240 }}
           placement="right"
           visible={visible}
         >
@@ -222,7 +218,11 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
               },
             ]}
           >
-            <Input size="large" type="password" placeholder="至少6位密码，区分大小写" />
+            <Input
+              size="large"
+              type="password"
+              placeholder={formatMessage({ id: 'userandregister.password.placeholder' })}
+            />
           </FormItem>
         </Popover>
         <FormItem
@@ -230,44 +230,42 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
           rules={[
             {
               required: true,
-              message: '请确认密码！',
+              message: formatMessage({ id: 'userandregister.confirm-password.required' }),
             },
             {
               validator: checkConfirm,
             },
           ]}
         >
-          <Input size="large" type="password" placeholder="确认密码" />
+          <Input
+            size="large"
+            type="password"
+            placeholder={formatMessage({ id: 'userandregister.confirm-password.placeholder' })}
+          />
         </FormItem>
         <InputGroup compact>
-          <Select
-            size="large"
-            value={prefix}
-            onChange={changePrefix}
-            style={{
-              width: '20%',
-            }}
-          >
+          <Select size="large" value={prefix} onChange={changePrefix} style={{ width: '20%' }}>
             <Option value="86">+86</Option>
             <Option value="87">+87</Option>
           </Select>
           <FormItem
-            style={{
-              width: '80%',
-            }}
+            style={{ width: '80%' }}
             name="mobile"
             rules={[
               {
                 required: true,
-                message: '请输入手机号！',
+                message: formatMessage({ id: 'userandregister.phone-number.required' }),
               },
               {
                 pattern: /^\d{11}$/,
-                message: '手机号格式错误！',
+                message: formatMessage({ id: 'userandregister.phone-number.wrong-format' }),
               },
             ]}
           >
-            <Input size="large" placeholder="手机号" />
+            <Input
+              size="large"
+              placeholder={formatMessage({ id: 'userandregister.phone-number.placeholder' })}
+            />
           </FormItem>
         </InputGroup>
         <Row gutter={8}>
@@ -277,11 +275,14 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
               rules={[
                 {
                   required: true,
-                  message: '请输入验证码！',
+                  message: formatMessage({ id: 'userandregister.verification-code.required' }),
                 },
               ]}
             >
-              <Input size="large" placeholder="验证码" />
+              <Input
+                size="large"
+                placeholder={formatMessage({ id: 'userandregister.verification-code.placeholder' })}
+              />
             </FormItem>
           </Col>
           <Col span={8}>
@@ -291,7 +292,9 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
               className={styles.getCaptcha}
               onClick={onGetCaptcha}
             >
-              {count ? `${count} s` : '获取验证码'}
+              {count
+                ? `${count} s`
+                : formatMessage({ id: 'userandregister.register.get-verification-code' })}
             </Button>
           </Col>
         </Row>
@@ -303,17 +306,16 @@ const Register: FC<RegisterProps> = ({ submitting, dispatch, userAndregister }) 
             type="primary"
             htmlType="submit"
           >
-            注册
+            <FormattedMessage id="userandregister.register.register" />
           </Button>
           <Link className={styles.login} to="/user/login">
-            使用已有账户登录
+            <FormattedMessage id="userandregister.register.sign-in" />
           </Link>
         </FormItem>
       </Form>
     </div>
   );
 };
-
 export default connect(
   ({
     userAndregister,

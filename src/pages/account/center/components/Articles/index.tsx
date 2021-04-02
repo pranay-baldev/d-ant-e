@@ -42,7 +42,7 @@ const Articles: React.FC<Partial<ModalState>> = (props) => {
             }
             description={
               <span>
-                <Tag>Console</Tag>
+                <Tag>Ant Design</Tag>
                 <Tag>设计语言</Tag>
                 <Tag>蚂蚁金服</Tag>
               </span>

@@ -1,25 +1,39 @@
 import { List, Switch } from 'antd';
 import React, { Component, Fragment } from 'react';
+
 import { formatMessage } from 'umi';
+
 type Unpacked<T> = T extends (infer U)[] ? U : T;
 
 class NotificationView extends Component {
   getData = () => {
-    const Action = <Switch checkedChildren="开" unCheckedChildren="关" defaultChecked />;
+    const Action = (
+      <Switch
+        checkedChildren={formatMessage({ id: 'accountandsettings.settings.open' })}
+        unCheckedChildren={formatMessage({ id: 'accountandsettings.settings.close' })}
+        defaultChecked
+      />
+    );
     return [
       {
-        title: '账户密码',
-        description: '其他用户的消息将以站内信的形式通知',
+        title: formatMessage({ id: 'accountandsettings.notification.password' }, {}),
+        description: formatMessage(
+          { id: 'accountandsettings.notification.password-description' },
+          {},
+        ),
         actions: [Action],
       },
       {
-        title: '系统消息',
-        description: '系统消息将以站内信的形式通知',
+        title: formatMessage({ id: 'accountandsettings.notification.messages' }, {}),
+        description: formatMessage(
+          { id: 'accountandsettings.notification.messages-description' },
+          {},
+        ),
         actions: [Action],
       },
       {
-        title: '待办任务',
-        description: '待办任务将以站内信的形式通知',
+        title: formatMessage({ id: 'accountandsettings.notification.todo' }, {}),
+        description: formatMessage({ id: 'accountandsettings.notification.todo-description' }, {}),
         actions: [Action],
       },
     ];

@@ -12,7 +12,6 @@ import SalesCard from './components/SalesCard';
 import TopSearch from './components/TopSearch';
 import ProportionSales from './components/ProportionSales';
 import OfflineData from './components/OfflineData';
-import Chart from './components/Charts/CustomCandleStick/Chart';
 
 import { getTimeDistance } from './utils/utils';
 import type { AnalysisData } from './data.d';
@@ -49,14 +48,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       dispatch({
         type: 'dashboardAndanalysis/fetch',
       });
-      // dispatch({
-
-      // })
     });
-    // getData().then((data) => {
-    //   console.log(data);
-    //   this.setState({ data });
-    // });
   }
 
   componentWillUnmount() {
@@ -152,9 +144,9 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
 
     const dropdownGroup = (
       <span className={styles.iconGroup}>
-        {/* <Dropdown overlay={menu} placement="bottomRight">
+        <Dropdown overlay={menu} placement="bottomRight">
           <EllipsisOutlined />
-        </Dropdown> */}
+        </Dropdown>
       </span>
     );
 
@@ -162,7 +154,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
     return (
       <GridContent>
         <React.Fragment>
-          {/* <IntroduceRow loading={loading} visitData={visitData} />
+          <IntroduceRow loading={loading} visitData={visitData} />
           <SalesCard
             rangePickerValue={rangePickerValue}
             salesData={salesData}
@@ -170,14 +162,14 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
             handleRangePickerChange={this.handleRangePickerChange}
             loading={loading}
             selectDate={this.selectDate}
-          /> */}
+          />
           <Row
             gutter={24}
             style={{
               marginTop: 24,
             }}
           >
-            <Col xl={24} lg={24} md={24} sm={24} xs={24}>
+            <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <TopSearch
                 loading={loading}
                 visitData2={visitData2}
@@ -185,10 +177,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
                 dropdownGroup={dropdownGroup}
               />
             </Col>
-            {/* <Col xl={12} lg={24} md={24} sm={24} xs={24}> */}
-            {/* <Chart type="svg" data={} /> */}
-            {/* </Col> */}
-            {/* <Col xl={12} lg={24} md={24} sm={24} xs={24}>
+            <Col xl={12} lg={24} md={24} sm={24} xs={24}>
               <ProportionSales
                 dropdownGroup={dropdownGroup}
                 salesType={salesType}
@@ -196,15 +185,15 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
                 salesPieData={salesPieData}
                 handleChangeSalesType={this.handleChangeSalesType}
               />
-            </Col> */}
+            </Col>
           </Row>
-          {/* <OfflineData
+          <OfflineData
             activeKey={activeKey}
             loading={loading}
             offlineData={offlineData}
             offlineChartData={offlineChartData}
             handleTabChange={this.handleTabChange}
-          /> */}
+          />
         </React.Fragment>
       </GridContent>
     );

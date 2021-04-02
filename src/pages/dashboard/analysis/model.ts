@@ -1,14 +1,14 @@
 import type { Effect, Reducer } from 'umi';
 
 import type { AnalysisData } from './data.d';
-import { fakeChartData, symbolChartData, symbolData } from './service';
+import { fakeChartData } from './service';
 
 export type ModelType = {
   namespace: string;
   state: AnalysisData;
   effects: {
     fetch: Effect;
-    fetchChartData: Effect;
+    fetchSalesData: Effect;
   };
   reducers: {
     save: Reducer<AnalysisData>;
@@ -36,20 +36,18 @@ const Model: ModelType = {
 
   effects: {
     *fetch(_, { call, put }) {
-      const response = yield call(symbolData);
-      console.log(response)
+      const response = yield call(fakeChartData);
       yield put({
         type: 'save',
         payload: response,
       });
     },
-    *fetchChartData(_, { call, put }) {
-      const response = yield call(symbolChartData);
-      console.log('s',response)
+    *fetchSalesData(_, { call, put }) {
+      const response = yield call(fakeChartData);
       yield put({
         type: 'save',
         payload: {
-          salesData: response.chartData,
+          salesData: response.salesData,
         },
       });
     },
